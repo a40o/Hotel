@@ -12,6 +12,8 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+        //use String instead of Room
+
         Room[] hotel = new Room[10];
         hotel[0] = new Room();
         hotel[1] = new Room();
