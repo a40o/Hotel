@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-
+//
         //TODO use String instead of Room
 
         Room[] hotel = new Room[10];
