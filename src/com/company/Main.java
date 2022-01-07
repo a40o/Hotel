@@ -12,7 +12,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        //use String instead of Room
+        //TODO use String instead of Room
 
         Room[] hotel = new Room[10];
         hotel[0] = new Room();
