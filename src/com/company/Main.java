@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-//
+
         //TODO use String instead of Room
 
         Room[] hotel = new Room[10];
@@ -61,6 +61,7 @@ public class Main {
                     case "V" -> ViewAllRooms(hotel);
                     case "D" -> DeleteCustomerFromRoom(hotel, roomNum);
                     case "X" -> {
+                        System.out.println("Goodbye!");
                         break loop;
                     }
                     default -> System.out.println("Invalid Selection");
@@ -105,14 +106,67 @@ public class Main {
         }
     }
 
+    static void features(int i) {
+        switch (i) {
+            case 1:
+                System.out.println("Number of double beds : 1\nAC : Yes\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            case 2:
+                System.out.println("Number of double beds : 2\nAC : No\nFree breakfast : Yes\nBaby bed : Yes");
+                break;
+            case 3:
+                System.out.println("Number of single beds : 3\nAC : Yes\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            case 4:
+            case 9:
+                System.out.println("Number of single beds : 2\nAC : No\nFree breakfast : Yes\nBaby bed : Yes");
+                break;
+            case 5:
+                System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            case 6:
+                System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nBaby bed : Yes");
+                break;
+            case 7:
+                System.out.println("Number of single beds : 3\nAC : No\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            case 8:
+                System.out.println("Number of single beds : 4\nAC : No\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            case 10:
+                System.out.println("Number of single beds : 5\nAC : No\nFree breakfast : Yes\nBaby bed : No");
+                break;
+            default:
+                System.out.println("Enter valid option");
+                break;
+        }
+    }
+
+//    private static void desireForRoom(int choice){
+//        if (choice == 2){
+//
+//        }
+//    }
+
     private static void BookARoom(Room[] myHotel, int roomNum) {
-        String roomName;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter room number (1-10):");
-        roomNum = input.nextInt() - 1;
-        System.out.println("Enter name for room " + (roomNum + 1) + " :");
-        roomName = input.next();
-        myHotel[roomNum].setName(roomName);
+        while (true) {
+            String roomName;
+            Scanner input = new Scanner(System.in);
+            System.out.println("Enter room number (1-10):");
+            roomNum = input.nextInt() - 1;
+            System.out.println("Room features:");
+            features(roomNum);
+            System.out.println("Would you still want to book this room?\n1) Yes\n2) No");
+            int choice = input.nextInt();
+            //desireForRoom(choice);
+            //TODO execute choice 1 once
+            if (choice == 2){
+                break;
+            }
+            System.out.println("Enter name for room " + (roomNum + 1) + " :");
+            roomName = input.next();
+            myHotel[roomNum].setName(roomName);
+        }
     }
 
     private static void ViewAllRooms(Room[] myHotel) {
@@ -132,11 +186,6 @@ public class Main {
     public static class Room {
 
         private String mainName;
-
-        public Room() {
-            mainName = "k";
-
-        }
 
         public void setName(String aName) {
             mainName = aName;
