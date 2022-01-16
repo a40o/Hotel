@@ -12,6 +12,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+//TODO add more rooms
 
         Room[] hotel = new Room[10];
         hotel[0] = new Room();
@@ -77,9 +78,8 @@ public class Main {
             if (input.nextInt() == 1) {
                 MainMenu = true;
             } else {
-                System.out.println();
-                System.exit(0);
-
+                System.out.println("Goodbye!");
+                MainMenu = false;
             }
         }
 
@@ -99,11 +99,17 @@ public class Main {
             String roomName;
             Scanner input = new Scanner(System.in);
             System.out.println("Enter room number (1-10):");
-            int roomNum = input.nextInt() - 1;
+
+            int roomNum = input.nextInt();
+
+            if (roomNum > 10 || roomNum < 1) {
+                System.out.println("Invalid option");
+                break;
+            }
             Features(roomNum);
             System.out.println("Would you still want to book this room?\n1) Yes\n2) No");
             int choice = input.nextInt();
-            if (choice == 2){
+            if (choice == 2) {
                 break;
             }
             System.out.println("Enter name for room " + (roomNum + 1) + " :");
@@ -117,15 +123,16 @@ public class Main {
         System.out.println("Room features:");
 
         switch (i) {
-            case 1 -> System.out.println("Number of double beds : 1\nAC : Yes\nFree breakfast : Yes\nBaby bed : No\n");
-            case 2 -> System.out.println("Number of double beds : 2\nAC : No\nFree breakfast : Yes\nBaby bed : Yes\n");
-            case 3 -> System.out.println("Number of single beds : 3\nAC : Yes\nFree breakfast : Yes\nBaby bed : No\n");
-            case 4, 9 -> System.out.println("Number of single beds : 2\nAC : No\nFree breakfast : Yes\nBaby bed : Yes\n");
-            case 5 -> System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
-            case 6 -> System.out.println("Number of single beds : 1\nAC : No\nFree breakfast : Yes\nBaby bed : Yes\n");
-            case 7 -> System.out.println("Number of single beds : 3\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
-            case 8 -> System.out.println("Number of single beds : 4\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
-            case 10 -> System.out.println("Number of single beds : 5\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
+            case 1 -> System.out.println("Number of beds : 1\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
+            case 2 -> System.out.println("Number of beds : 2\nAC : No\nFree breakfast : Yes\nBaby bed : Yes\n");
+            case 3 -> System.out.println("Number of beds : 3\nAC : Yes\nFree breakfast : Yes\nBaby bed : No\n");
+            case 4 -> System.out.println("Number of beds : 2\nAC : Yes\nFree breakfast : No\nBaby bed : Yes\n");
+            case 5 -> System.out.println("Number of beds : 1\nAC : No\nFree breakfast : No\nBaby bed : No\n");
+            case 6 -> System.out.println("Number of beds : 1\nAC : No\nFree breakfast : Yes\nBaby bed : Yes\n");
+            case 7 -> System.out.println("Number of beds : 3\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
+            case 8 -> System.out.println("Number of beds : 4\nAC : No\nFree breakfast : No\nBaby bed : No\n");
+            case 9 -> System.out.println("Number of beds : 4\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
+            case 10 -> System.out.println("Number of beds : 3\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
             default -> System.out.println("Enter valid option");
         }
     }
@@ -144,14 +151,22 @@ public class Main {
         }
     }
 
-    //TODO add invalid oprions
+    //TODO fix invalid input bug
 
     private static void DeleteCustomerFromRoom(Room[] myHotel) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter room number to delete(1-10):");
-        int roomNum = input.nextInt() - 1;
-        myHotel[roomNum].setName("nobody");
-        System.out.println("Room deleted :)");
+        int i = 1;
+        while (i == 1) {
+            System.out.println("Enter room number to delete(1-10):");
+            int roomNum = input.nextInt() - 1;
+            if (roomNum > 9 || roomNum < 0) {
+                System.out.println("Invalid option");
+                break;
+            }
+            myHotel[roomNum].setName("nobody");
+            System.out.println("Room deleted :)");
+            i++;
+        }
     }
 
     public static class Room {
