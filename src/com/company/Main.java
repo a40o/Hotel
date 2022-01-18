@@ -28,62 +28,82 @@ public class Main {
 
         Initialise(hotel);
 
-        loop1:
-        while (MainMenu) {
-            while (SubMenu) {
+        for (int i = 1; i == 1; ) {
+            loop1:
+            while (MainMenu) {
 
-                System.out.println("Hello and Welcome to our Hotel Program");
-                System.out.println("Please select one of the options:");
+                while (SubMenu) {
 
-                System.out.println("A: Book A New Room.");
-                System.out.println();
+                    System.out.println("Hello and Welcome to our Hotel Program");
+                    System.out.println("Please select one of the options:");
 
-                System.out.println("E: Display Empty Rooms.");
-                System.out.println();
+                    System.out.println("A: Book A New Room.");
+                    System.out.println();
 
-                System.out.println("V: View all Rooms.");
-                System.out.println();
+                    System.out.println("E: Display Empty Rooms.");
+                    System.out.println();
 
-                System.out.println("D: Delete customer from room.");
-                System.out.println();
+                    System.out.println("V: View all Rooms.");
+                    System.out.println();
 
-                System.out.println("X Exit");
+                    System.out.println("D: Delete customer from room.");
+                    System.out.println();
 
-                String Selection = input.next();
-                Selection = Selection.toUpperCase();
+                    System.out.println("X Exit");
 
-                switch (Selection) {
+                    String Selection = input.next();
+                    Selection = Selection.toUpperCase();
 
-                    case "A" -> BookARoom(hotel);
-                    case "E" -> CheckIfEmpty(hotel);
-                    case "V" -> ViewAllRooms(hotel);
-                    case "D" -> DeleteCustomerFromRoom(hotel);
-                    case "X" -> {
-                        System.out.println("Goodbye!");
-                        break loop1;
+                    switch (Selection) {
+
+                        case "A" -> BookARoom(hotel);
+                        case "E" -> CheckIfEmpty(hotel);
+                        case "V" -> ViewAllRooms(hotel);
+                        case "D" -> DeleteCustomerFromRoom(hotel);
+                        case "X" -> {
+                            break loop1;
+                        }
+                        default -> System.out.println("Invalid Selection");
                     }
-                    default -> System.out.println("Invalid Selection");
+
+                    System.out.println("Would you like to Select another Option\n1 ) Yes\n2 ) No");
+
+                    String menuChoice = input.next();
+                    try {
+                        if (Integer.parseInt(menuChoice) == 1) {
+                            SubMenu = true;
+                        } else if (Integer.parseInt(menuChoice) == 2) {
+                            break loop1;
+                        } else {
+                            System.out.println("Invalid");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error!\nPlease select again.");
+                    }
                 }
-
-                System.out.println("Would you like to Select another Option\n1 ) Yes\n2 ) No");
-
-
-                SubMenu = input.nextInt() == 1;
             }
 
             SubMenu = true;
 
             System.out.println("Would You Like To Continue With The Program\n1 ) Yes\n2 ) No");
 
-            if (input.nextInt() == 1) {
-                MainMenu = true;
-            } else {
-                System.out.println("Goodbye!");
-                MainMenu = false;
+            String exitChoice = input.next();
+            try {
+                if (Integer.parseInt(exitChoice) == 1) {
+                    i = 1;
+                } else if (Integer.parseInt(exitChoice) == 2) {
+                    System.out.println("Goodbye!");
+                    i = 2;
+                } else {
+                    System.out.println("Invalid");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error!\nPlease select again.");
             }
-        }
 
+        }
     }
+
 
     private static void Initialise(Room[] myHotel) {
 //      (int x = 0; x < myHotel.length; x++)
