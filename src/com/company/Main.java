@@ -13,7 +13,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         Room[] hotel = new Room[20];
-
         hotel[0] = new Room();
         hotel[1] = new Room();
         hotel[2] = new Room();
@@ -34,46 +33,6 @@ public class Main {
         hotel[17] = new Room();
         hotel[18] = new Room();
         hotel[19] = new Room();
-
-        Initialise(hotel);
-
-        for (int i = 1; i == 1; ) {
-            loop1:
-            while (MainMenu) {
-
-                while (SubMenu) {
-
-                    System.out.println("Hello and Welcome to our Hotel Program");
-                    System.out.println("Please select one of the options:");
-
-                    System.out.println("A: Book A New Room.");
-                    System.out.println();
-
-                    System.out.println("E: Display Empty Rooms.");
-                    System.out.println();
-
-                    System.out.println("V: View all Rooms.");
-                    System.out.println();
-
-                    System.out.println("D: Delete customer from room.");
-                    System.out.println();
-
-                    System.out.println("X Exit");
-
-                    String Selection = input.next();
-                    Selection = Selection.toUpperCase();
-
-                    switch (Selection) {
-
-                        case "A" -> BookARoom(hotel);
-                        case "E" -> CheckIfEmpty(hotel);
-                        case "V" -> ViewAllRooms(hotel);
-                        case "D" -> DeleteCustomerFromRoom(hotel);
-                        case "X" -> {
-                            break loop1;
-                        }
-                        default -> System.out.println("Invalid Selection");
-                    }
 
         Initialise(hotel);
 
@@ -182,7 +141,6 @@ public class Main {
             Features(Integer.parseInt(roomNum));
 
             System.out.println("Would you still want to book this room?\n1) Yes\n2) No");
-
             String choice = input.nextLine();
             try {
                 if (Integer.parseInt(choice) == 2) {
@@ -194,33 +152,13 @@ public class Main {
                 i++;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
-
-        while (i == 1) {
-            String roomName;
-            Scanner input = new Scanner(System.in);
-            System.out.println("Enter room number (1-10):");
-
-            int roomNum = input.nextInt();
-
-            if (roomNum > 10 || roomNum < 1) {
-                System.out.println("Invalid option");
                 break;
             }
-            Features(roomNum);
-            System.out.println("Would you still want to book this room?\n1) Yes\n2) No");
-            int choice = input.nextInt();
-            if (choice == 2) {
-                break;
-            }
-            System.out.println("Enter name for room " + (roomNum + 1) + " :");
-            roomName = input.next();
-            myHotel[roomNum].setName(roomName);
-            i++;
         }
     }
 
     static void Features(int i) {
-        System.out.println("Room features:");
+        System.out.println("Room №: " + i + " features:");
 
         switch (i) {
             case 1 -> System.out.println("Number of beds : 1\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
@@ -266,7 +204,6 @@ public class Main {
         int i = 1;
         while (i == 1) {
             System.out.println("Enter room number to delete(1-20):");
-
             String roomNum = input.nextLine(); //-1 !!!!!!!
 
             try {
@@ -281,20 +218,6 @@ public class Main {
                 System.out.println("Invalid input");
                 break;
             }
-
-    private static void DeleteCustomerFromRoom(Room[] myHotel) {
-        Scanner input = new Scanner(System.in);
-        int i = 1;
-        while (i == 1) {
-            System.out.println("Enter room number to delete(1-10):");
-            int roomNum = input.nextInt() - 1;
-            if (roomNum > 9 || roomNum < 0) {
-                System.out.println("Invalid option");
-                break;
-            }
-            myHotel[roomNum].setName("nobody");
-            System.out.println("Room deleted :)");
-            i++;
         }
     }
 
