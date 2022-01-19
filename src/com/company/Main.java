@@ -12,13 +12,10 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-<<<<<<< HEAD
         Room[] hotel = new Room[20];
-=======
-//TODO add more rooms
 
         Room[] hotel = new Room[10];
->>>>>>> b2cd48595fe756f52ccf3e9b8250358cd24e9824
+
         hotel[0] = new Room();
         hotel[1] = new Room();
         hotel[2] = new Room();
@@ -42,7 +39,6 @@ public class Main {
 
         Initialise(hotel);
 
-<<<<<<< HEAD
         for (int i = 1; i == 1; ) {
             loop1:
             while (MainMenu) {
@@ -81,7 +77,6 @@ public class Main {
                         default -> System.out.println("Invalid Selection");
                     }
 
-=======
         Initialise(hotel);
 
         for (int i = 1; i == 1; ) {
@@ -122,7 +117,6 @@ public class Main {
                         default -> System.out.println("Invalid Selection");
                     }
 
->>>>>>> b2cd48595fe756f52ccf3e9b8250358cd24e9824
                     System.out.println("Would you like to Select another Option\n1 ) Yes\n2 ) No");
 
                     String menuChoice = input.next();
@@ -171,7 +165,6 @@ public class Main {
 
     private static void BookARoom(Room[] myHotel) {
         int i = 1;
-<<<<<<< HEAD
 
         while (i == 1) {
             String roomName;
@@ -203,7 +196,6 @@ public class Main {
                 i++;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
-=======
 
         while (i == 1) {
             String roomName;
@@ -214,7 +206,6 @@ public class Main {
 
             if (roomNum > 10 || roomNum < 1) {
                 System.out.println("Invalid option");
->>>>>>> b2cd48595fe756f52ccf3e9b8250358cd24e9824
                 break;
             }
             Features(roomNum);
@@ -244,7 +235,6 @@ public class Main {
             case 8 -> System.out.println("Number of beds : 4\nAC : No\nFree breakfast : No\nBaby bed : No\n");
             case 9 -> System.out.println("Number of beds : 4\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
             case 10 -> System.out.println("Number of beds : 3\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
-<<<<<<< HEAD
             case 11 -> System.out.println("Number of beds : 3\nAC : No\nFree breakfast : No\nBaby bed : Yes\n");
             case 12 -> System.out.println("Number of beds : 2\nAC : Yes\nFree breakfast : Yes\nBaby bed : No\n");
             case 13 -> System.out.println("Number of beds : 5\nAC : No\nFree breakfast : No\nBaby bed : No\n");
@@ -255,8 +245,6 @@ public class Main {
             case 18 -> System.out.println("Number of beds : 5\nAC : No\nFree breakfast : Yes\nBaby bed : No\n");
             case 19 -> System.out.println("Number of beds : 4\nAC : Yes\nFree breakfast : Yes\nBaby bed : No\n");
             case 20 -> System.out.println("Number of beds : 3\nAC : No\nFree breakfast : No\nBaby bed : No\n");
-=======
->>>>>>> b2cd48595fe756f52ccf3e9b8250358cd24e9824
             default -> System.out.println("Enter valid option");
         }
     }
@@ -275,7 +263,6 @@ public class Main {
         }
     }
 
-<<<<<<< HEAD
     private static void DeleteCustomerFromRoom(Room[] myHotel) {
         Scanner input = new Scanner(System.in);
         int i = 1;
@@ -296,8 +283,6 @@ public class Main {
                 System.out.println("Invalid input");
                 break;
             }
-=======
-    //TODO fix invalid input bug
 
     private static void DeleteCustomerFromRoom(Room[] myHotel) {
         Scanner input = new Scanner(System.in);
@@ -312,7 +297,6 @@ public class Main {
             myHotel[roomNum].setName("nobody");
             System.out.println("Room deleted :)");
             i++;
->>>>>>> b2cd48595fe756f52ccf3e9b8250358cd24e9824
         }
     }
 
