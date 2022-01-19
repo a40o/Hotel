@@ -14,8 +14,6 @@ public class Main {
 
         Room[] hotel = new Room[20];
 
-        Room[] hotel = new Room[10];
-
         hotel[0] = new Room();
         hotel[1] = new Room();
         hotel[2] = new Room();
