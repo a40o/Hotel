@@ -127,6 +127,7 @@ public class Main {
             System.out.println("Enter room number (1-20):");
 
             String roomNum = input.nextLine();
+
             try {
                 if (Integer.parseInt(roomNum) > 20 || Integer.parseInt(roomNum) < 1) {
                     System.out.println("Invalid option");
