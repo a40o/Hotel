@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static boolean MainMenu = true;
     private static boolean SubMenu = true;
 
 
@@ -38,7 +37,7 @@ public class Main {
 
         for (int i = 1; i == 1; ) {
             loop1:
-            while (MainMenu) {
+            while (true) {
 
                 while (SubMenu) {
 
@@ -98,7 +97,7 @@ public class Main {
             String exitChoice = input.next();
             try {
                 if (Integer.parseInt(exitChoice) == 1) {
-                    i = 1;
+                    System.out.println("Good");
                 } else if (Integer.parseInt(exitChoice) == 2) {
                     System.out.println("Goodbye!");
                     i = 2;
