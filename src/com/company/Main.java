@@ -191,8 +191,8 @@ public class Main {
     private static void ViewFreeRooms(Room[] myHotel) {
         System.out.println("Free rooms: ");
         for (int x = 0; x < myHotel.length; x++) {
-            if (myHotel[x].getName().equals("nobody")){
-                System.out.println("room " + (x+1));
+            if (myHotel[x].getName().equals("nobody")) {
+                System.out.println("room " + (x + 1));
             }
         }
     }
