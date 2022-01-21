@@ -53,6 +53,9 @@ public class Main {
                     System.out.println("V: View all Rooms.");
                     System.out.println();
 
+                    System.out.println("F: View free rooms");
+                    System.out.println();
+
                     System.out.println("D: Delete customer from room.");
                     System.out.println();
 
@@ -66,6 +69,7 @@ public class Main {
                         case "A" -> BookARoom(hotel);
                         case "E" -> CheckIfEmpty(hotel);
                         case "V" -> ViewAllRooms(hotel);
+                        case "F" -> ViewFreeRooms(hotel);
                         case "D" -> DeleteCustomerFromRoom(hotel);
                         case "X" -> {
                             break loop1;
@@ -157,7 +161,7 @@ public class Main {
     }
 
     static void Features(int i) {
-        System.out.println("Room №: " + i + " features:");
+        System.out.println("Room №" + i + " features:");
 
         switch (i) {
             case 1 -> System.out.println("Number of beds : 1\nAC : Yes\nFree breakfast : No\nBaby bed : No\n");
@@ -184,6 +188,15 @@ public class Main {
         }
     }
 
+    private static void ViewFreeRooms(Room[] myHotel) {
+        System.out.println("Free rooms: ");
+        for (int x = 0; x < myHotel.length; x++) {
+            if (myHotel[x].getName().equals("nobody")){
+                System.out.println("room " + (x+1));
+            }
+        }
+    }
+
     private static void ViewAllRooms(Room[] myHotel) {
         for (int x = 0; x < myHotel.length; x++) {
             System.out.println("room " + (x + 1) + " occupied by " + myHotel[x].getName());
@@ -203,7 +216,7 @@ public class Main {
         int i = 1;
         while (i == 1) {
             System.out.println("Enter room number to delete(1-20):");
-            String roomNum = input.nextLine(); //-1 !!!!!!!
+            String roomNum = input.nextLine();
 
             try {
                 if (Integer.parseInt(roomNum) > 20 || Integer.parseInt(roomNum) < 1) {
@@ -211,7 +224,7 @@ public class Main {
                     break;
                 }
                 myHotel[Integer.parseInt(roomNum) - 1].setName("nobody");
-                System.out.println("Room deleted :)");
+                System.out.println("Room deleted");
                 i++;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
