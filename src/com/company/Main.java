@@ -4,34 +4,17 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static boolean SubMenu = true;
-
+    private static boolean subMenu = true;
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
         Room[] hotel = new Room[20];
-        hotel[0] = new Room();
-        hotel[1] = new Room();
-        hotel[2] = new Room();
-        hotel[3] = new Room();
-        hotel[4] = new Room();
-        hotel[5] = new Room();
-        hotel[6] = new Room();
-        hotel[7] = new Room();
-        hotel[8] = new Room();
-        hotel[9] = new Room();
-        hotel[10] = new Room();
-        hotel[11] = new Room();
-        hotel[12] = new Room();
-        hotel[13] = new Room();
-        hotel[14] = new Room();
-        hotel[15] = new Room();
-        hotel[16] = new Room();
-        hotel[17] = new Room();
-        hotel[18] = new Room();
-        hotel[19] = new Room();
+
+        for (int i = 0; i < hotel.length; i++) {
+            hotel[i] = new Room();
+        }
 
         Initialise(hotel);
 
@@ -39,38 +22,19 @@ public class Main {
             loop1:
             while (true) {
 
-                while (SubMenu) {
+                while (subMenu) {
 
-                    System.out.println("Hello and Welcome to our Hotel Program");
-                    System.out.println("Please select one of the options:");
-
-                    System.out.println("A: Book A New Room.");
-                    System.out.println();
-
-                    System.out.println("E: Display Empty Rooms.");
-                    System.out.println();
-
-                    System.out.println("V: View all Rooms.");
-                    System.out.println();
-
-                    System.out.println("F: View free rooms");
-                    System.out.println();
-
-                    System.out.println("D: Delete customer from room.");
-                    System.out.println();
-
-                    System.out.println("X Exit");
+                    displayMenuOptions();
 
                     String Selection = input.next();
                     Selection = Selection.toUpperCase();
 
                     switch (Selection) {
 
-                        case "A" -> BookARoom(hotel);
-                        case "E" -> CheckIfEmpty(hotel);
-                        case "V" -> ViewAllRooms(hotel);
-                        case "F" -> ViewFreeRooms(hotel);
-                        case "D" -> DeleteCustomerFromRoom(hotel);
+                        case "A" -> bookARoom(hotel);
+                        case "E" -> checkIfEmpty(hotel);
+                        case "V" -> viewAllRooms(hotel);
+                        case "D" -> deleteCustomerFromRoom(hotel);
                         case "X" -> {
                             break loop1;
                         }
@@ -82,7 +46,7 @@ public class Main {
                     String menuChoice = input.next();
                     try {
                         if (Integer.parseInt(menuChoice) == 1) {
-                            SubMenu = true;
+                            subMenu = true;
                         } else if (Integer.parseInt(menuChoice) == 2) {
                             break loop1;
                         } else {
@@ -94,24 +58,50 @@ public class Main {
                 }
             }
 
-            SubMenu = true;
+            subMenu = true;
 
-            System.out.println("Would You Like To Continue With The Program\n1 ) Yes\n2 ) No");
-
-            String exitChoice = input.next();
-            try {
-                if (Integer.parseInt(exitChoice) == 1) {
-                    System.out.println("Good");
-                } else if (Integer.parseInt(exitChoice) == 2) {
-                    System.out.println("Goodbye!");
-                    i = 2;
-                } else {
-                    System.out.println("Invalid");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Error!\nPlease select again.");
-            }
+            i = decisionToExit(i);
         }
+    }
+
+    private static void displayMenuOptions() {
+        System.out.println("Hello and Welcome to our Hotel Program");
+        System.out.println("Please select one of the options:");
+
+        System.out.println("A: Book A New Room.");
+        System.out.println();
+
+        System.out.println("E: Display Empty Rooms.");
+        System.out.println();
+
+        System.out.println("V: View all Rooms.");
+        System.out.println();
+
+        System.out.println("D: Delete customer from room.");
+        System.out.println();
+
+        System.out.println("X Exit");
+    }
+
+    public static int decisionToExit(int i) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Would You Like To Continue With The Program\n1 ) Yes\n2 ) No");
+
+        String exitChoice = input.next();
+        try {
+            if (Integer.parseInt(exitChoice) == 1) {
+                System.out.println("Good");
+            } else if (Integer.parseInt(exitChoice) == 2) {
+                System.out.println("Goodbye!");
+                i = 2;
+            } else {
+                System.out.println("Invalid");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error!\nPlease select again.");
+        }
+        return i;
     }
 
 
@@ -122,7 +112,7 @@ public class Main {
         }
     }
 
-    private static void BookARoom(Room[] myHotel) {
+    private static void bookARoom(Room[] myHotel) {
         int i = 1;
 
         while (i == 1) {
@@ -188,22 +178,13 @@ public class Main {
         }
     }
 
-    private static void ViewFreeRooms(Room[] myHotel) {
-        System.out.println("Free rooms: ");
-        for (int x = 0; x < myHotel.length; x++) {
-            if (myHotel[x].getName().equals("nobody")) {
-                System.out.println("room " + (x + 1));
-            }
-        }
-    }
-
-    private static void ViewAllRooms(Room[] myHotel) {
+    private static void viewAllRooms(Room[] myHotel) {
         for (int x = 0; x < myHotel.length; x++) {
             System.out.println("room " + (x + 1) + " occupied by " + myHotel[x].getName());
         }
     }
 
-    private static void CheckIfEmpty(Room[] myHotel) {
+    private static void checkIfEmpty(Room[] myHotel) {
         for (int x = 0; x < myHotel.length; x++) {
             if (myHotel[x].getName().equals("nobody")) {
                 System.out.println("room " + (x + 1) + " is empty");
@@ -211,7 +192,7 @@ public class Main {
         }
     }
 
-    private static void DeleteCustomerFromRoom(Room[] myHotel) {
+    private static void deleteCustomerFromRoom(Room[] myHotel) {
         Scanner input = new Scanner(System.in);
         int i = 1;
         while (i == 1) {
